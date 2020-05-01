@@ -15,7 +15,7 @@ public class StudentStorage {
     //the same course object, not two separate course objects (double check by comparing the memory locations of the
     //courses on the fetched students in your Part 3 tests).
 
-    static void save(Collection<Student> students, File file) throws IOException {
+    public static void save(Collection<Student> students, File file) throws IOException {
         //saves a list of students to a binary file and to CSV file, depending on what file format a user chooses
         // (see part 4). Note that the data of referenced objects (address and course) should be saved as well.
         // Read the hints at the end of the document!
@@ -27,13 +27,13 @@ public class StudentStorage {
         fos.close();
     }
 
-    static void save(Collection<Student> students, String fileName) throws IOException {
+    public static void save(Collection<Student> students, String fileName) throws IOException {
         //saves a list of students to a binary file with a given name.
         // no code should be replicated between the two versions of save.
         save(students, new File(fileName));
     }
 
-    static Collection<Student> load(File file) throws IOException, ClassNotFoundException {
+    public static Collection<Student> load(File file) throws IOException, ClassNotFoundException {
         //reads student data from a binary file.
         FileInputStream fis = new FileInputStream(file);
         ObjectInputStream ois = new ObjectInputStream(fis);
