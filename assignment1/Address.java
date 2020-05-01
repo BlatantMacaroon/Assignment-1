@@ -1,8 +1,9 @@
 package assignment1;
 
+import java.io.Serializable;
 import java.util.Objects;
 
-public class Address {
+public class Address implements Cloneable, Serializable {
     private String town;
     private String street;
     private String postCode;
@@ -62,4 +63,10 @@ public class Address {
     public int hashCode() {
         return Objects.hash(town, street, postCode, houseNumber);
     }
+
+    @Override
+    public Address clone() throws CloneNotSupportedException {
+        return (Address)super.clone();
+    }
+
 }

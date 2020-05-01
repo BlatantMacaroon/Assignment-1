@@ -1,9 +1,10 @@
 package assignment1;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.Objects;
 
-public class Student implements Cloneable {
+public class Student implements Cloneable, Serializable {
     private String firstName;
     private String surname;
     private String id;
@@ -86,9 +87,10 @@ public class Student implements Cloneable {
         return Objects.hash(firstName, surname, id, dob, course, address);
     }
 
+    @Override
     public Student clone() throws CloneNotSupportedException { // need to check that address is deepcopy and course shallow
         Student cloned = (Student)super.clone();
-        cloned.setAddress(new Address(address.getTown(), address.getStreet(), address.getPostCode(), address.getHouseNumber()));
+        cloned.address = address.clone();
         return cloned;
     }
 }
